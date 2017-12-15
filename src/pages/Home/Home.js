@@ -14,26 +14,26 @@ class Home extends Component {
 
   render(){
     return(
-    	<div>
     	<Container fluid>
     		<Row>
-    			<Col size = "col-md-2">
-			        <Cards
-			        	src={this.state.images[0]}
-			        	alt={this.state.name[0]}
-			        >
-			        	<h4>{this.state.name[0]}</h4>
-			        </Cards>
-	        	</Col>
-
-	        	<Col size = "col-md-10">
+	        	<Col size = "col-md-10 order-md-2">
 	        		<div id="arrange-room">
 	        			
 	        		</div>
 	        	</Col>
+
+    			<Col size = "col-md-2 order-md-1">
+	    			<div id="furnituresDiv">
+				        <Cards
+				        	src={this.state.images[0]}
+				        	alt={this.state.name[0]}
+				        >
+				        	<h6>{this.state.name[0]}</h6>
+				        </Cards>
+				    </div>
+	        	</Col>
 	        </Row>
-	      </Container>
-        </div>
+	    </Container>
       )
   }
 
