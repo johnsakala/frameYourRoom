@@ -2,8 +2,9 @@
   "name": "test",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jinredhub.github.io/frameYourRoom",
+  "homepage": "https://vrooms.github.io/frameYourRoom",
   "dependencies": {
+    "gh-pages": "^1.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
@@ -16,8 +17,5 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
-  },
-  "devDependencies": {
-    "gh-pages": "^1.1.0"
   }
 }
