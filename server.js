@@ -1,32 +1,27 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-// const routes = require("./routes");
-const routes = require("./controllers/articlesController.js");
-const app = express();
-const PORT = process.env.PORT || 3001;
+var express = require("express");
+var bodyParser = require("body-parser");
+var path = require("path");
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nytreact";
+var app = express();
+var port = process.env.PORT || 3000;
 
-
-// Configure body parser for AJAX requests
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-// Serve up static assets
+// public folder
 app.use(express.static("client/build"));
-// Add routes, both API and view
-app.use(routes);
 
-// Set up promises with mongoose
-// mongoose.Promise = global.Promise;
-mongoose.Promise = Promise;
+// Parse application/x-www-form-urlencoded
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-// Connect to the Mongo DB
-mongoose.connect(MONGODB_URI, {
-  useMongoClient: true
+app.get("/", function(req, res) {
+  // this is a way to send a file. It will create correct path for Mac & PC
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// Start the API server
-app.listen(PORT, function() {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+// routes
+// require("./routes/twitter-api-routes.js");
+
+app.listen(port, function() {
+  console.log("listening on port", port);
 });
