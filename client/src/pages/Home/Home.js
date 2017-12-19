@@ -12,13 +12,12 @@ class Home extends Component {
   state = {
   	images: [chair, "./img/desk.png"],
   	name: ["Desk Chair", "Worker Desk"],
-  	size: ["40 W 48 D 83 H cm", "180 W x 90 D x 73 H cm"],
   	roomRatio: {
   		x: 1,
   		y: 1
   	},
   	dummyData: [
-  		{name: "chair", position: {x: 0, y: 0}}
+  		{name: "chair", position: {x: 0, y: 0}, size: {width: 200, height: 100}},
   	]
   };
 
@@ -29,6 +28,8 @@ class Home extends Component {
 
 
   render(){
+    console.log("==========================", this.state);
+
     return(
     	<Container fluid>
     		<Row>
@@ -38,14 +39,26 @@ class Home extends Component {
                   style={{background:"#ddd"}}
                   bounds="parent"
                   default={{
-                    x:0,
-                    y:0,
+                    x:this.state.dummyData[0].position.x,
+                    y:this.state.dummyData[0].position.y,
                     width:320,
                     height:200
                   }}
                 >
                   Rnd
                 </Rnd>
+                <Rnd
+                  style={{background: "#fff"}}
+                  size={{width: this.state.dummyData[0].size.width, height: this.state.dummyData[0].size.height}}
+                  position={{x: this.state.dummyData[0].position.x, y: this.state.dummyData[0].position.y}}
+                  onDragStop={(e,d)=>{
+                    let dummyData = Object.assign({}, this.state.dummyData);
+                    dummyData[0].position.x = d.x;
+                    dummyData[0].position.y = d.y;
+                    this.setState({
+                      dummyData
+                  })}}
+                >2nd box</Rnd>
 	        		</div>
 	        	</Col>
 
