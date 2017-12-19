@@ -2,11 +2,12 @@
   "name": "test",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vrooms.github.io/frameYourRoom",
+  "homepage": "https://VROOMS.github.io/frameYourRoom",
   "dependencies": {
     "gh-pages": "^1.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-rnd": "^7.3.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17"
   },
