@@ -34,18 +34,18 @@ class Home extends Component {
     		<Row>
 	        	<Col size = "col-md-10 order-md-2">
 	        		<div id="arrange-room">
-              <Rnd
-                style={{background:"#ddd"}}
-                bounds="parent"
-                default={{
-                  x:0,
-                  y:0,
-                  width:320,
-                  height:200
-                }}
-              >
-                Rnd
-              </Rnd>
+                <Rnd
+                  style={{background:"#ddd"}}
+                  bounds="parent"
+                  default={{
+                    x:0,
+                    y:0,
+                    width:320,
+                    height:200
+                  }}
+                >
+                  Rnd
+                </Rnd>
 	        		</div>
 	        	</Col>
 
