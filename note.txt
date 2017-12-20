@@ -22,3 +22,6 @@ How to use firebase + react.
 	import {database} from "./firebase";
 
 4. that's all
+
+Use componentDidUpdate(){} to push data to db.
+Use componentDidMount(){} to pull data from db.
