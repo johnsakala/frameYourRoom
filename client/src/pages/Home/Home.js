@@ -5,26 +5,35 @@ import { Cards } from "../../components/Cards";
 import {Col, Row, Container} from "../../components/Grid";
 import chair from "../../components/Cards/img/chair.png";
 import Rnd from "react-rnd"
+import {database} from "./firebase";
 
 
 class Home extends Component {
 
   state = {
   	images: [chair, "./img/desk.png"],
-  	name: ["Desk Chair", "Worker Desk"],
   	roomRatio: {
   		x: 1,
   		y: 1
   	},
-  	dummyData: [
-  		{name: "chair", position: {x: 0, y: 0}, size: {width: 200, height: 100}},
+  	modelsData: [
+  		{id: "Desk Chair", position: {x: 0, y: 0}, size: {width: 100, height: 100}},
   	]
   };
 
 
-  // componentDidMount(){
-  // }
+  componentDidMount(){
 
+  }
+
+  componentDidUpdate(){
+    this.updateDatabase();
+  }
+
+  updateDatabase = () =>{
+    let modelsData = this.state.modelsData;
+    database.ref().push(modelsData);
+  }
 
 
   render(){
@@ -39,8 +48,8 @@ class Home extends Component {
                   style={{background:"#ddd"}}
                   bounds="parent"
                   default={{
-                    x:this.state.dummyData[0].position.x,
-                    y:this.state.dummyData[0].position.y,
+                    x:this.state.modelsData[0].position.x,
+                    y:this.state.modelsData[0].position.y,
                     width:320,
                     height:200
                   }}
@@ -49,14 +58,14 @@ class Home extends Component {
                 </Rnd>
                 <Rnd
                   style={{background: "#fff"}}
-                  size={{width: this.state.dummyData[0].size.width, height: this.state.dummyData[0].size.height}}
-                  position={{x: this.state.dummyData[0].position.x, y: this.state.dummyData[0].position.y}}
+                  size={{width: this.state.modelsData[0].size.width, height: this.state.modelsData[0].size.height}}
+                  position={{x: this.state.modelsData[0].position.x, y: this.state.modelsData[0].position.y}}
                   onDragStop={(e,d)=>{
-                    let dummyData = Object.assign({}, this.state.dummyData);
-                    dummyData[0].position.x = d.x;
-                    dummyData[0].position.y = d.y;
+                    let modelsData = Object.assign({}, this.state.modelsData);
+                    modelsData[0].position.x = d.x;
+                    modelsData[0].position.y = d.y;
                     this.setState({
-                      dummyData
+                      modelsData
                   })}}
                 >2nd box</Rnd>
 	        		</div>
@@ -66,9 +75,9 @@ class Home extends Component {
 	    			<div id="furnituresDiv">
 				        <Cards
 				        	src={this.state.images[0]}
-				        	alt={this.state.name[0]}
+				        	alt={this.state.modelsData[0].id}
 				        >
-				        	<h6>{this.state.name[0]}</h6>
+				        	<h6>{this.state.modelsData[0].id}</h6>
 				        </Cards>
 				    </div>
 	        	</Col>
