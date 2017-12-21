@@ -90,6 +90,7 @@ class Home extends Component {
                       modelsData
                   })}}
                 >
+                  <img className="img-fluid" src={this.state.imagesTop[0]} draggable="false" />
                   Mayline Chair
                 </Rnd>
                 <Rnd
@@ -107,7 +108,6 @@ class Home extends Component {
                       modelsData
                   })}}
                 >
-                <img className="img-fluid" src={this.state.imagesTop[0]} draggable="false" />
                   Sauder Desk
                 </Rnd>
 	        		</div>
