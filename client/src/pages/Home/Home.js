@@ -12,8 +12,8 @@ import {database} from "./firebase";
 class Home extends Component {
 
   state = {
-  	images: [maylineChair, sauderDesk ],
-    imagesTop: ["/images2/maylineChair.jpg",],
+  	images: ["/images/maylineChair.png", sauderDesk ],
+    imagesTop: ["/images/maylineChairTop.jpg",],
   	modelsData: [
       {id: "roomRatio", ratio: {x: 500, y: 300}},
       {id: "Mayline Chair", degree: 0, position: {x: 0, y: 0}, size: {width: 100, height: 100}},
@@ -45,7 +45,7 @@ class Home extends Component {
 	        	<Col size = "col-md-10 order-md-2">
 	        		<div id="arrange-room">
                 <Rnd
-                  style={{background: "#4fb8f9"}}
+                  className="room"
                   dragGrid={[25,25]}
                   resizeGrid={[25,25]}
                   default={{
@@ -60,7 +60,6 @@ class Home extends Component {
                       modelsData
                     })}}
                 >
-                  Your Room
                 </Rnd>
                 <Rnd
                   style={{background: "#fff"}}

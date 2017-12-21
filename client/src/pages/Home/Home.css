@@ -4,5 +4,9 @@
 	height: 100vh;
 }
 
+.room{
+	background-image: url("/images/floor.jpg");
+	background-size: 100% 100%;
+}
 
 
