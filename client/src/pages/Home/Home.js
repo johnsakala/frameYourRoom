@@ -12,10 +12,14 @@ import {database} from "./firebase";
 class Home extends Component {
 
   state = {
+    allData: [
+      {arrayId: 0, buttonId: "button0", id: "Mayline Chair", degree: 0, position: {x: 10, y: 10}, size: {width: 50, height: 50}, image: "/images/maylineChair.png", imageTop: "/images/maylineChairTop.png"},
+      {arrayId: 1, buttonId: "button1", id: "Sauder Desk", degree: 0, position: {x: 50, y: 50}, size: {width: 100, height: 100}, image: "/images/sauderDesk.png", imageTop: "/images/sauderDeskTop.png"},
+    ],
   	modelsData: [
       {id: "roomRatio", ratio: {x: 500, y: 300}},
-      {id: "Mayline Chair", degree: 0, position: {x: 0, y: 0}, size: {width: 50, height: 50}, image: "/images/maylineChair.png", imageTop: "/images/maylineChairTop.png"},
-      {id: "Sauder Desk", degree: 0, position: {x: 50, y: 50}, size: {width: 100, height: 100}, image: "/images/sauderDesk.png", imageTop: "/images/sauderDeskTop.png"},
+      {arrayId: 0, id: "Mayline Chair", degree: 0, position: {x: 10, y: 10}, size: {width: 50, height: 50}, image: "/images/maylineChair.png", imageTop: "/images/maylineChairTop.png"},
+      {arrayId: 1, id: "Sauder Desk", degree: 0, position: {x: 50, y: 50}, size: {width: 100, height: 100}, image: "/images/sauderDesk.png", imageTop: "/images/sauderDeskTop.png"},
   	],
   };
 
@@ -31,6 +35,24 @@ class Home extends Component {
   updateDatabase = () =>{
     let modelsData = this.state.modelsData;
     database.ref("-L0lnD2HZtHWqW9cmZYk").set(modelsData);
+  }
+
+  handlesAddFurnitureButton = (arrayId, buttonId) =>{
+    console.log("add btn was clicked");
+    console.log("arrayId: ",arrayId);
+
+    let newFurnitureInfo = this.state.allData[arrayId];
+    let modelsData = this.state.modelsData;
+    modelsData.push(newFurnitureInfo);
+    console.log("modelsData",modelsData);
+
+    // toggle button with buttonId
+    let targetBtn = document.querySelector(`#${buttonId}`);
+    targetBtn.setAttribute("disabled", "");
+
+    this.setState({
+      modelsData: modelsData,
+    });
   }
 
 
@@ -103,18 +125,22 @@ class Home extends Component {
 
     			<Col size = "col-md-2 order-md-1">
 	    			<div id="furnituresDiv">
-				        <Cards
-				        	src={this.state.modelsData[1].image}
-				        	alt={this.state.modelsData[1].id}
-				        >
-				        	<h6>{this.state.modelsData[1].id}</h6>
-				        </Cards>
+
+              {this.state.allData.map((value)=>(
                 <Cards
-                  src={this.state.modelsData[2].image}
-                  alt={this.state.modelsData[2].id}
+                  arrayId={value.arrayId}
+                  src={value.image}
+                  alt={value.id}
+                  key={value.arrayId}
+                  buttonId={value.buttonId}
+                  handlesAddFurnitureButton={this.handlesAddFurnitureButton}
                 >
-                  <h6>{this.state.modelsData[2].id}</h6>
-                </Cards>              
+                  <h6>{value.id}</h6>
+                </Cards>
+              ))}
+
+
+            
 				    </div>
 	        	</Col>
 	        </Row>
