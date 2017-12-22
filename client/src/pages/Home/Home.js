@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "./Home.css";
 import { Cards } from "../../components/Cards";
 import {Col, Row, Container} from "../../components/Grid";
-import maylineChair from "../../components/Cards/img/mayline_chair.png";
-import sauderDesk from "../../components/Cards/img/sauder_desk.png";
+// import maylineChair from "../../components/Cards/img/mayline_chair.png";
+// import sauderDesk from "../../components/Cards/img/sauder_desk.png";
 // import Rnd from "react-rnd"
 import Rnd from "react-rnd-rotate"
 import {database} from "./firebase";
@@ -12,12 +12,10 @@ import {database} from "./firebase";
 class Home extends Component {
 
   state = {
-  	images: ["/images/maylineChair.png", sauderDesk ],
-    imagesTop: ["/images/maylineChairTop.jpg",],
   	modelsData: [
       {id: "roomRatio", ratio: {x: 500, y: 300}},
-      {id: "Mayline Chair", degree: 0, position: {x: 0, y: 0}, size: {width: 100, height: 100}},
-      {id: "Sauder Desk", degree: 0, position: {x: 50, y: 50}, size: {width: 100, height: 100}},
+      {id: "Mayline Chair", degree: 0, position: {x: 0, y: 0}, size: {width: 50, height: 50}, image: "/images/maylineChair.png", imageTop: "/images/maylineChairTop.png"},
+      {id: "Sauder Desk", degree: 0, position: {x: 50, y: 50}, size: {width: 100, height: 100}, image: "/images/sauderDesk.png", imageTop: "/images/sauderDeskTop.png"},
   	],
   };
 
@@ -46,8 +44,7 @@ class Home extends Component {
 	        		<div id="arrange-room">
                 <Rnd
                   className="room"
-                  dragGrid={[25,25]}
-                  resizeGrid={[25,25]}
+                  resizeGrid={[10,10]}
                   default={{
                     width: this.state.modelsData[0].ratio.x,
                     height: this.state.modelsData[0].ratio.y,
@@ -62,8 +59,7 @@ class Home extends Component {
                 >
                 </Rnd>
                 <Rnd
-                  style={{background: "#fff"}}
-                  dragGrid={[25,25]}
+                  dragGrid={[10,10]}
                   default={{
                     x: this.state.modelsData[1].position.x,
                     y: this.state.modelsData[1].position.y,
@@ -80,11 +76,10 @@ class Home extends Component {
                       modelsData
                   })}}
                 >
-                  <img className="img-fluid" src={this.state.imagesTop[0]} draggable="false" />
-                  Mayline Chair
+                  <img className="img-fluid" src={this.state.modelsData[1].imageTop} draggable="false" />
                 </Rnd>
                 <Rnd
-                  style={{background: "#fdf"}}
+                  dragGrid={[10,10]}
                   default={{
                     x: this.state.modelsData[2].position.x,
                     y: this.state.modelsData[2].position.y,
@@ -101,7 +96,7 @@ class Home extends Component {
                       modelsData
                   })}}
                 >
-                  Sauder Desk
+                  <img className="img-fluid" src={this.state.modelsData[2].imageTop} draggable="false" />
                 </Rnd>
 	        		</div>
 	        	</Col>
@@ -109,11 +104,17 @@ class Home extends Component {
     			<Col size = "col-md-2 order-md-1">
 	    			<div id="furnituresDiv">
 				        <Cards
-				        	src={this.state.images[0]}
+				        	src={this.state.modelsData[1].image}
 				        	alt={this.state.modelsData[1].id}
 				        >
 				        	<h6>{this.state.modelsData[1].id}</h6>
 				        </Cards>
+                <Cards
+                  src={this.state.modelsData[2].image}
+                  alt={this.state.modelsData[2].id}
+                >
+                  <h6>{this.state.modelsData[2].id}</h6>
+                </Cards>              
 				    </div>
 	        	</Col>
 	        </Row>
