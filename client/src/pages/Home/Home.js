@@ -23,6 +23,8 @@ class Home extends Component {
       {arrayId: 7, buttonId: "button7", id: "KARLS_Sofa", className: "btn btn-primary", buttonText: "Add to scene", dimensions: "205 W, 93 D, 80 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 205, height: 93}, image: "/images/KARLS_Sofa_prod.jpg", imageTop: "/images/KARLS_Sofa_top.png"},
       {arrayId: 8, buttonId: "button8", id: "VIM_Sofa", className: "btn btn-primary", buttonText: "Add to scene", dimensions: "241 W, 98 D, 80 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 241, height: 98}, image: "/images/VIM_Sofa_prod.png", imageTop: "/images/VIM_Sofa_top.png"},
       {arrayId: 9, buttonId: "button9", id: "Picture A", className: "btn btn-primary", buttonText: "Add to scene", dimensions: "200 W, 140 D cm", degree: 0, position: {x: 50, y: 50}, size: {width: 200, height: 20}, image: "/images/picture_A_prod.png", imageTop: "/images/picture_A_top.png"},
+      {arrayId: 10, buttonId: "button10", id: "HAM Rug", className: "btn btn-primary", buttonText: "Add to scene", dimensions: "160 W, 230 L cm", degree: 0, position: {x: 50, y: 50}, size: {width: 160, height: 230}, image: "/images/HAM_Rug_prod.png", imageTop: "/images/HAM_Rug_top.png"},
+      {arrayId: 11, buttonId: "button11", id: "BRIM Closet", className: "btn btn-primary", buttonText: "Add to scene", dimensions: "117 W, 50 D, 190 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 117, height: 50}, image: "/images/BRIM_closet_prod.png", imageTop: "/images/BRIM_closet_top.png"},
     ],
   	modelsData: [
       {arrayId: 0, id: "roomRatio", degree: 0, position: {x: 0, y: 0}, size: {width: 500, height: 300}, imageTop: "/images/floor.jpg"},
