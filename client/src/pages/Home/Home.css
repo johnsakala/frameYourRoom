@@ -8,5 +8,15 @@
 	background-image: url("/images/floor.jpg");
 	background-size: 100% 100%;
 }
-
-
+h6{
+	font-weight: bold;
+}
+p{
+	font-size: 0.8rem;
+	font-weight: 500;
+}
+/*----------google font-------------------*/
+body{
+	font-family: 'Montserrat', sans-serif;
+}
+/*----------google font-------------------*/
