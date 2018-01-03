@@ -1,7 +1,8 @@
 #arrange-room{
-	background-color: #bdd8b1;
+	background-color: #c7eae1;
 	background-image: url("./img/grid2.png");
 	height: 100vh;
+	left: 25px;
 }
 #furnituresDiv{
 	overflow-y: scroll;
@@ -18,6 +19,18 @@ h6{
 p{
 	font-size: 0.8rem;
 	font-weight: 500;
+}
+#ruler{
+	overflow: hidden;
+}
+.ruler_y{
+	position: relative;
+	width: 25px;
+	float: left;
+}
+.img-size{
+	height: 100%;
+	width: 100%;
 }
 /*----------google font-------------------*/
 body{

@@ -3,8 +3,9 @@
 
 @media only screen and (max-width: 768px){
 
-	.myImages{
-		width: 100px;
+	.card{
+		width: 170px;
+		display: inline-block;
 	}
 
 }
