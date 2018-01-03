@@ -108,6 +108,10 @@ class Home extends Component {
 
     return(
     	<Container fluid>
+    		<div className="header">
+    			LOGO <a  href="https://vrooms.github.io/vr-room/" target="_blank">view room </a><span className="align-baseline">click here to visit your current room</span>
+    		</div>
+
     		<Row>
 	        	<Col size = "col-md-10 order-md-2">
 	              <div id="ruler">
@@ -156,7 +160,7 @@ class Home extends Component {
 	                          modelsData: this.state.modelsData
 	                      })}}
 	                    >
-	                      <img className="img-size" alt={value.id} src={value.imageTop} draggable="false" />
+	                      <img className="img-fluid" alt={value.id} src={value.imageTop} draggable="false" />
 	                    </Rnd>
 	                        ));
 

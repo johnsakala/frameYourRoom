@@ -32,6 +32,10 @@ p{
 	height: 100%;
 	width: 100%;
 }
+.header{
+	padding:18px 20px;
+	border-bottom: 2px solid black;
+}
 /*----------google font-------------------*/
 body{
 	font-family: 'Montserrat', sans-serif;
