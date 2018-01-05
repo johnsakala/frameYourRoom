@@ -1,11 +1,15 @@
 
+.card{
+	margin: 6px;
+	border: 0px;
+	border-bottom: 2px dashed #cecece;
+	border-radius: 0;
+}
+p{
+	font-size: 0.7rem;
+}
 
 
 @media only screen and (max-width: 768px){
-
-	.card{
-		width: 170px;
-		display: inline-block;
-	}
 
 }

@@ -7,6 +7,8 @@
 #furnituresDiv{
 	overflow-y: scroll;
 	height: 100vh;
+	width: 20%;
+	float: left;
 }
 
 .room{
@@ -15,14 +17,17 @@
 }
 h6{
 	font-weight: bold;
+	margin-bottom: 0;
 }
 p{
 	font-size: 0.8rem;
 	font-weight: 500;
+	margin-bottom: 3px;
 }
 #ruler{
 	height: 100vh;
 	overflow: hidden;
+	width: 80%;
 }
 .ruler_y{
 	position: relative;
@@ -34,9 +39,16 @@ p{
 	width: 100%;
 }
 .header{
+	text-align: center;
 	padding:18px 20px;
 	border-bottom: 2px solid black;
+	background-color: #fdf4cf;
 }
+#bg1{
+	/*background-image: url("/images/bg1.jpg");*/
+	background-color: red;
+}
+
 /*----------google font-------------------*/
 body{
 	font-family: 'Montserrat', sans-serif;
