@@ -1,3 +1,8 @@
+
+#logo{
+	height:  30px;
+	cursor: pointer;
+}
 #arrange-room{
 	background-color: #c7eae1;
 	background-image: url("./img/grid2.png");

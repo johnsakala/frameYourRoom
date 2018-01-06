@@ -4,8 +4,7 @@ import { Cards } from "../../components/Cards";
 import {Col, Row, Container} from "../../components/Grid";
 import Rnd from "react-rnd-rotate";
 import {database} from "./firebase";
-// import * as throttle from "lodash.throttle;"
-
+const throttle = require("lodash.throttle");
 
 class Home extends Component {
 
@@ -42,6 +41,7 @@ class Home extends Component {
   // update db everytime dom update
   componentDidUpdate(){
     this.updateDatabase();
+    console.log("updating db");
   }
 
   // update db method
@@ -72,13 +72,17 @@ class Home extends Component {
       )
   }
 
-  throttle = () =>  {
-    // _.throttle(this.updateDatabase,);
-    // alert("hello");
-    // this.setState({
-    //   counter: this.state.counter + 1
-    // })
-  }
+  // throttleUpdate = () =>  {
+  //   throttle(this.updateDatabase,500);
+  //   console.log("throttle")
+  //   // alert("hello");
+  //   // this.setState({
+  //   //   counter: this.state.counter + 1
+  //   // })
+  // }
+
+
+  throttleUpdate = throttle(this.updateDatabase,500);
 
   // add data to array modelsData
   addFurniture = (arrayId, buttonId) =>{
@@ -108,6 +112,10 @@ class Home extends Component {
     }) ;
   }
 
+  openWebsite = () =>{
+    window.open("https://vroomsentrance.herokuapp.com/");
+  }
+
 
   render(){
     console.log("==========================", this.state);
@@ -116,7 +124,7 @@ class Home extends Component {
       <div>
 
     		<div className="header">
-    			<span className="align-baseline">When you're finished arranging furniture, click <a  href="https://vrooms.github.io/vr-room/" target="_blank"><strong>HERE</strong></a> to see it!</span>
+    			<img id="logo" onClick={this.openWebsite} src="/images/logo.png" />&nbsp;<span className="align-baseline">When you're finished arranging furniture, click <a  href="https://vrooms.github.io/vr-room/" target="_blank"><strong>HERE</strong></a> to see it!</span>
         </div>
 
 
@@ -145,7 +153,7 @@ class Home extends Component {
             <div id="ruler">
               <img src="/images/ruler_x.jpg" />
               <img className="ruler_y" src="/images/ruler_y.jpg" />
-              <div id="arrange-room" onMouseDown={this.throttle}>
+              <div id="arrange-room" onMouseMove={this.throttleUpdate}>
                   {this.state.modelsData.map((value,i)=>{
                     return (
                       value.id === "roomRatio" ?
