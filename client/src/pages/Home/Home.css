@@ -1,7 +1,7 @@
 
 #logo{
 	height:  30px;
-	cursor: pointer;
+	/*cursor: pointer;*/
 }
 #arrange-room{
 	background-color: #c7eae1;
@@ -11,10 +11,11 @@
 }
 #furnituresDiv{
 	overflow-y: scroll;
-	height: 100vh;
+	height: 90vh;
 	width: 20%;
 	float: left;
 }
+
 
 .room{
 	background-image: url("/images/floor.jpg");
@@ -30,7 +31,7 @@ p{
 	margin-bottom: 3px;
 }
 #ruler{
-	height: 100vh;
+	height: 90vh;
 	overflow: hidden;
 	width: 80%;
 }
@@ -48,6 +49,7 @@ p{
 	padding:18px 20px;
 	border-bottom: 2px solid black;
 	background-color: #fdf4cf;
+	position: sticky;
 }
 #bg1{
 	/*background-image: url("/images/bg1.jpg");*/
