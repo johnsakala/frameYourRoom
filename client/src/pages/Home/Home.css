@@ -1,7 +1,8 @@
 
 #logo{
-	height:  30px;
-	/*cursor: pointer;*/
+	height:  22px;
+	padding: 5px;
+	cursor: pointer;
 }
 #arrange-room{
 	background-color: #c7eae1;
@@ -45,16 +46,18 @@ p{
 	width: 100%;
 }
 .header{
-	text-align: center;
-	padding:18px 20px;
 	border-bottom: 2px solid black;
 	background-color: #fdf4cf;
-	position: sticky;
+	height: 10vh;
+	width: 100%;
+	text-align: center;
+	display:  table;
 }
-#bg1{
-	/*background-image: url("/images/bg1.jpg");*/
-	background-color: red;
+.headerContent{
+	display: table-cell;
+	vertical-align: middle;
 }
+
 
 /*----------google font-------------------*/
 body{
