@@ -1,8 +1,11 @@
 
 #logo{
-	height:  22px;
+	height:  28px;
 	padding: 5px;
 	cursor: pointer;
+}
+#logoP{
+	font-size: 1.2rem;
 }
 #arrange-room{
 	background-color: #c7eae1;

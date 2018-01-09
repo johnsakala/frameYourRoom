@@ -113,8 +113,10 @@ class Home extends Component {
 
     		<div className="header">
         <div className="headerContent">
-          <a href="https://vroomsentrance.herokuapp.com/"><img id="logo" src="/images/logo.png" /></a>
-          &nbsp;When you're finished arranging furniture, click <a  href="https://vrooms.github.io/vr-room/" target="_blank"><strong>HERE</strong></a> to see it!
+          <p id="logoP">
+            <a href="https://vroomsentrance.herokuapp.com/"><img id="logo" src="/images/logo.png" /></a>
+            &nbsp;When you're finished arranging furniture, click <a  href="https://vrooms.github.io/vr-room/" target="_blank"><strong>HERE</strong></a> to see it!
+          </p>
         </div>
         </div>
 
