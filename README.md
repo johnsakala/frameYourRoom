@@ -1,4 +1,4 @@
-# NYT-react
+# Simulate your room
 
 ## visit website
 
@@ -12,7 +12,7 @@ then view it in 360 degree virtual reality environmrnt.
 This app is consist of 2 other project.
 These are the github link to the other part of the project
 
-Entrance: https://vrooms.github.io/entrance/
+Entrance: https://github.com/VROOMS/entrance
 
 Viewer: https://github.com/VROOMS/vr-room
 
