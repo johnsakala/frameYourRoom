@@ -27,6 +27,7 @@ class Home extends Component {
       {arrayId: 14, buttonId: "button14", id: "stock-rug", z: 1, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "170 W, 240 L cm", degree: 0, position: {x: 50, y: 50}, size: {width: 170, height: 240}, image: "/images/STOCK_Rug_prod.png", imageTop: "/images/STOCK_Rug_top.png"},
       {arrayId: 15, buttonId: "button15", id: "snes-bed", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "167 W, 213 D, 120 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 167, height: 213}, image: "/images/SNES_Bed_prod.png", imageTop: "/images/SNES_Bed_top.png"},
       {arrayId: 16, buttonId: "button16", id: "nes-closet", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "120 W, 59 D, 197 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 120, height: 59}, image: "/images/NES_closet_prod.jpg", imageTop: "/images/NES_closet_top.png"},
+      {arrayId: 17, buttonId: "button17", id: "coffee-table", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "90 W, 55 D, 45 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 90, height: 55}, image: "/images/Coffee_table.jpg", imageTop: "/images/Coffee_table_top.jpg"},
     ],
   	modelsData: [
       {arrayId: 0, id: "roomRatio", degree: 0, position: {x: 0, y: 0}, size: {width: 500, height: 300}, imageTop: "/images/floor.jpg"},
