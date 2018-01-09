@@ -42,3 +42,6 @@ yarn build
 
 ## Scrrenshot
 
+![website img](https://github.com/VROOMS/frameYourRoom/blob/master/screenshot/screenshot1.png)
+
+![website img](https://github.com/VROOMS/frameYourRoom/blob/master/screenshot/screenshot2.png)
