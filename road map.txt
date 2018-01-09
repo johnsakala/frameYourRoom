@@ -1,9 +1,0 @@
-
-1. Another project for entrance page.
-2. In entrance page. Click on a button to create new room with react router.
-	-press new room
-	-push data to db with default room size and furnitures
-		-this will create new id
-
-3. VR page will read db with specific id
-4. User can text their unique url to phone to view

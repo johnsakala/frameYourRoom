@@ -2,17 +2,27 @@
 
 ## visit website
 
-https://nytime-react.herokuapp.com/
+https://vrooms.github.io/entrance/
 
 ## About This App
 
-This app will allow user to sarch articles from NYTimes database. User also can save articels.
+The app allows user to place the funiture of your choice into the room,
+then view it in 360 degree virtual reality environmrnt.
+
+This app is consist of 2 other project.
+These are the github link to the other part of the project
+
+Entrance: https://vrooms.github.io/entrance/
+
+Viewer: https://github.com/VROOMS/vr-room
 
 ## Starting the app locally
 
-Run the following coomand While in this directory
+Run the following coomand
 
 ```
+cd client
+yarn install
 yarn start
 ```
 
@@ -29,4 +39,6 @@ yarn build
 3. Add and commit all changes to git
 
 4. Push to Heroku
+
+## Scrrenshot
 
