@@ -30,7 +30,7 @@ class Home extends Component {
       {arrayId: 17, buttonId: "button17", id: "coffee-table", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "90 W, 55 D, 45 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 90, height: 55}, image: "/images/Coffee_table.jpg", imageTop: "/images/Coffee_table_top.png"},
     ],
   	modelsData: [
-      {arrayId: 0, id: "roomRatio", degree: 0, position: {x: 0, y: 0}, size: {width: 500, height: 300}, imageTop: "/images/floor.jpg"},
+      {arrayId: 0, id: "roomRatio", z: 1 , degree: 0, position: {x: 0, y: 0}, size: {width: 500, height: 300}, imageTop: "/images/floor.jpg"},
   	],
   };
 
@@ -114,7 +114,7 @@ class Home extends Component {
     		<div className="header">
         <div className="headerContent">
           <p id="logoP">
-            <a href="https://vroomsentrance.herokuapp.com/"><img id="logo" src="/images/logo.png" /></a>
+            <a href="https://vrooms.github.io/entrance/"><img id="logo" src="/images/logo.png" /></a>
             &nbsp;When you're finished arranging furniture, click <a  href="https://vrooms.github.io/vr-room/" target="_blank"><strong>HERE</strong></a> to see it!
           </p>
         </div>
@@ -144,11 +144,20 @@ class Home extends Component {
               <img src="/images/ruler_x.jpg" />
               <img className="ruler_y" src="/images/ruler_y.jpg" />
               <div id="arrange-room">
+                  <img className="instruction" 
+                    onClick={() => {
+                      // console.log("closed");
+                      const instructionImg = document.querySelector(".instruction");
+                      instructionImg.style.display = "none";
+                    }} 
+                    src="/images/instruction.png" 
+                  />
                   {this.state.modelsData.map((value,i)=>{
                     return (
                       value.id === "roomRatio" ?
                        (
                      <Rnd
+                     z={value.z}
                       key={value.arrayId}
                       className="room"
                       resizeGrid={[10,10]}

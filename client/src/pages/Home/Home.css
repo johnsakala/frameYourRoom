@@ -19,7 +19,13 @@
 	width: 20%;
 	float: left;
 }
-
+.instruction{
+	cursor: pointer;
+	z-index: 5;
+	position: relative;
+	top: 135px;
+	left: 95px;
+}
 
 .room{
 	background-image: url("/images/floor.jpg");
