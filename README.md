@@ -1,4 +1,4 @@
-# Simulate your room
+# VRooms
 
 ## visit website
 
