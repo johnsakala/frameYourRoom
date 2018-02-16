@@ -1,4 +1,5 @@
 
+/*=========header===============*/
 #logo{
 	height:  28px;
 	padding: 5px;
@@ -7,26 +8,66 @@
 #logoP{
 	font-size: 1.2rem;
 }
+.header{
+	border-bottom: 2px solid black;
+	background-color: #fdf4cf;
+	height: 10vh;
+	width: 100%;
+	text-align: center;
+	display:  table;
+}
+.headerContent{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+/*=========side furniture area================*/
+.furnituresDiv{
+	overflow-y: scroll;
+	height: 90vh;
+	width: 20%;
+	float: left;
+}
+#sideBtnArea{
+	display: none;
+	position: relative;
+	top: 0px;
+}
+#sideBtnArea a{
+	position: absolute;
+	left: -10px;
+	color: white;
+	border-radius: 5px;
+	background-color: #385bfc;
+	z-index: 5;
+	margin-top: 50px;
+	cursor: pointer;
+	font-size: 40px;
+}
+#sideBtnArea a:hover{
+	color: #c5c5c5;
+}
+#openNav{
+	top:30px;
+}
+#openVR{
+	top: 110px;
+}
+
+/* =========== main area =============*/
+.instruction{
+	cursor: pointer;
+	z-index: 5;
+	position: relative;
+	top: 170px;
+	left: 180px;
+}
 #arrange-room{
 	background-color: #c7eae1;
 	background-image: url("./img/grid2.png");
 	height: 100vh;
 	left: 25px;
 }
-#furnituresDiv{
-	overflow-y: scroll;
-	height: 90vh;
-	width: 20%;
-	float: left;
-}
-.instruction{
-	cursor: pointer;
-	z-index: 5;
-	position: relative;
-	top: 135px;
-	left: 95px;
-}
-
 .room{
 	background-image: url("/images/floor.jpg");
 	background-size: 100% 100%;
@@ -54,18 +95,6 @@ p{
 	height: 100%;
 	width: 100%;
 }
-.header{
-	border-bottom: 2px solid black;
-	background-color: #fdf4cf;
-	height: 10vh;
-	width: 100%;
-	text-align: center;
-	display:  table;
-}
-.headerContent{
-	display: table-cell;
-	vertical-align: middle;
-}
 
 
 /*----------google font-------------------*/
@@ -73,3 +102,33 @@ body{
 	font-family: 'Montserrat', sans-serif;
 }
 /*----------google font-------------------*/
+
+
+@media only screen and (max-width: 1024px){
+	/*======== header =====================*/
+	.header{
+		display: none;
+	}
+
+	/*======= side furniture area==========*/
+	.furnituresDiv{
+		width: 100%;
+	}
+	#menu{
+		display: none;
+	}
+	#sideBtnArea{
+		display: block;
+	}
+
+	/*===========main area===============*/
+	#ruler{
+		width: 100%;
+		height: 100vh;
+	}
+	.instruction{
+		top: 170px;
+		left: 180px;
+	}
+
+}

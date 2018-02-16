@@ -4,6 +4,7 @@ import { Cards } from "../../components/Cards";
 import {Col, Row, Container} from "../../components/Grid";
 import Rnd from "react-rnd-rotate";
 import {database} from "./firebase";
+import { Sidenav } from "../../components/Sidenav";
 const throttle = require("lodash.throttle");
 
 class Home extends Component {
@@ -11,26 +12,26 @@ class Home extends Component {
   state = {
     counter: 0,
     allData: [
-      {arrayId: 1, buttonId: "button1", id: "mayline-chair", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "74 W, 74 D, 110 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 74, height: 74}, image: "/images/maylineChair_prod.png", imageTop: "/images/maylineChair_top.png"},
-      {arrayId: 2, buttonId: "button2", id: "sauder-desk", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "150 W, 65 D, 110 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 150, height: 65}, image: "/images/sauderDesk_prod.png", imageTop: "/images/sauderDesk_top.png"},
-      {arrayId: 3, buttonId: "button3", id: "bil-bookcase", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "80 W, 28 D, 106 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 80, height: 28}, image: "/images/BIL_bookcase_prod.jpg", imageTop: "/images/BIL_Bookcase_top.png"},
-      {arrayId: 4, buttonId: "button4", id: "kal-shelf", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "86 W, 39 D, 147 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 86, height: 39}, image: "/images/KAL_Shelf_unit_prod.jpg", imageTop: "/images/KAL_Shelf_unit_top.png"},
-      {arrayId: 5, buttonId: "button5", id: "pot-uplighter", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "28 W, 28 D, 174 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 28, height: 28}, image: "/images/POT_uplighter_prod.jpg", imageTop: "/images/POT_uplighter_top.png"},
-      {arrayId: 6, buttonId: "button6", id: "moto-uplighter", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "28 W, 28 D, 174 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 28, height: 28}, image: "/images/MOTO_Uplighter_prod.jpg", imageTop: "/images/MOTO_uplighter_top.png"},
-      {arrayId: 7, buttonId: "button7", id: "karl-sofa", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "205 W, 93 D, 80 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 205, height: 93}, image: "/images/KARLS_Sofa_prod.jpg", imageTop: "/images/KARLS_Sofa_top.png"},
-      {arrayId: 8, buttonId: "button8", id: "vim-sofa", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "241 W, 98 D, 80 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 241, height: 98}, image: "/images/VIM_Sofa_prod.png", imageTop: "/images/VIM_Sofa_top.png"},
-      {arrayId: 9, buttonId: "button9", id: "picture-frame-a", z: 3, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "200 W, 30 D, 140 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 200, height: 20}, image: "/images/Picture_A_prod.png", imageTop: "/images/picture_A_top.png"},
-      {arrayId: 10, buttonId: "button10", id: "ham-rug", z: 1, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "160 W, 230 L cm", degree: 0, position: {x: 50, y: 50}, size: {width: 160, height: 230}, image: "/images/HAM_Rug_prod.png", imageTop: "/images/HAM_Rug_top.png"},
-      {arrayId: 11, buttonId: "button11", id: "brim-closet", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "117 W, 50 D, 190 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 117, height: 50}, image: "/images/BRIM_closet_prod.png", imageTop: "/images/BRIM_closet_top.png"},
-      {arrayId: 12, buttonId: "button12", id: "mel-tv-unit", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "183 W, 47 D, 57 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 183, height: 47}, image: "/images/MEL_TV_unit_prod.png", imageTop: "/images/MEL_TV_unit_top.png"},
-      {arrayId: 13, buttonId: "button13", id: "picture-frame-b", z: 3, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "140 W, 30 D, 100 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 140, height: 20}, image: "/images/pictureB_prod.png", imageTop: "/images/pictureB_top.png"},
-      {arrayId: 14, buttonId: "button14", id: "stock-rug", z: 1, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "170 W, 240 L cm", degree: 0, position: {x: 50, y: 50}, size: {width: 170, height: 240}, image: "/images/STOCK_Rug_prod.png", imageTop: "/images/STOCK_Rug_top.png"},
-      {arrayId: 15, buttonId: "button15", id: "snes-bed", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "167 W, 213 D, 120 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 167, height: 213}, image: "/images/SNES_Bed_prod.png", imageTop: "/images/SNES_Bed_top.png"},
-      {arrayId: 16, buttonId: "button16", id: "nes-closet", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "120 W, 59 D, 197 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 120, height: 59}, image: "/images/NES_closet_prod.jpg", imageTop: "/images/NES_closet_top.png"},
-      {arrayId: 17, buttonId: "button17", id: "coffee-table", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "90 W, 55 D, 45 H cm", degree: 0, position: {x: 50, y: 50}, size: {width: 90, height: 55}, image: "/images/Coffee_table.jpg", imageTop: "/images/Coffee_table_top.png"},
+      {arrayId: 1, buttonId: "button1", id: "mayline-chair", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "74 W, 74 D, 110 H cm", degree: 0, position: {x: 250, y: 50}, size: {width: 74, height: 74}, image: "/images/maylineChair_prod.png", imageTop: "/images/maylineChair_top.png"},
+      {arrayId: 2, buttonId: "button2", id: "sauder-desk", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "150 W, 65 D, 110 H cm", degree: 0, position: {x: 250, y: 50}, size: {width: 150, height: 65}, image: "/images/sauderDesk_prod.png", imageTop: "/images/sauderDesk_top.png"},
+      {arrayId: 3, buttonId: "button3", id: "bil-bookcase", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "80 W, 28 D, 106 H cm", degree: 0, position: {x: 250, y: 50}, size: {width: 80, height: 28}, image: "/images/BIL_bookcase_prod.jpg", imageTop: "/images/BIL_Bookcase_top.png"},
+      {arrayId: 4, buttonId: "button4", id: "kal-shelf", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "86 W, 39 D, 147 H cm", degree: 0, position: {x: 250, y: 50}, size: {width: 86, height: 39}, image: "/images/KAL_Shelf_unit_prod.jpg", imageTop: "/images/KAL_Shelf_unit_top.png"},
+      {arrayId: 5, buttonId: "button5", id: "pot-uplighter", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "28 W, 28 D, 174 H cm", degree: 0, position: {x: 250, y: 50}, size: {width: 28, height: 28}, image: "/images/POT_uplighter_prod.jpg", imageTop: "/images/POT_uplighter_top.png"},
+      {arrayId: 6, buttonId: "button6", id: "moto-uplighter", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "28 W, 28 D, 174 H cm", degree: 0, position: {x: 250, y: 50}, size: {width: 28, height: 28}, image: "/images/MOTO_Uplighter_prod.jpg", imageTop: "/images/MOTO_uplighter_top.png"},
+      {arrayId: 7, buttonId: "button7", id: "karl-sofa", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "205 W, 93 D, 80 H cm", degree: 0, position: {x: 250, y: 50}, size: {width: 205, height: 93}, image: "/images/KARLS_Sofa_prod.jpg", imageTop: "/images/KARLS_Sofa_top.png"},
+      {arrayId: 8, buttonId: "button8", id: "vim-sofa", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "241 W, 98 D, 80 H cm", degree: 0, position: {x: 250, y: 50}, size: {width: 241, height: 98}, image: "/images/VIM_Sofa_prod.png", imageTop: "/images/VIM_Sofa_top.png"},
+      {arrayId: 9, buttonId: "button9", id: "picture-frame-a", z: 3, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "200 W, 30 D, 140 H cm", degree: 0, position: {x: 250, y: 50}, size: {width: 200, height: 20}, image: "/images/Picture_A_prod.png", imageTop: "/images/picture_A_top.png"},
+      {arrayId: 10, buttonId: "button10", id: "ham-rug", z: 1, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "160 W, 230 L cm", degree: 0, position: {x: 250, y: 50}, size: {width: 160, height: 230}, image: "/images/HAM_Rug_prod.png", imageTop: "/images/HAM_Rug_top.png"},
+      {arrayId: 11, buttonId: "button11", id: "brim-closet", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "117 W, 50 D, 190 H cm", degree: 0, position: {x: 250, y: 50}, size: {width: 117, height: 50}, image: "/images/BRIM_closet_prod.png", imageTop: "/images/BRIM_closet_top.png"},
+      {arrayId: 12, buttonId: "button12", id: "mel-tv-unit", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "183 W, 47 D, 57 H cm", degree: 0, position: {x: 250, y: 50}, size: {width: 183, height: 47}, image: "/images/MEL_TV_unit_prod.png", imageTop: "/images/MEL_TV_unit_top.png"},
+      {arrayId: 13, buttonId: "button13", id: "picture-frame-b", z: 3, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "140 W, 30 D, 100 H cm", degree: 0, position: {x: 250, y: 50}, size: {width: 140, height: 20}, image: "/images/pictureB_prod.png", imageTop: "/images/pictureB_top.png"},
+      {arrayId: 14, buttonId: "button14", id: "stock-rug", z: 1, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "170 W, 240 L cm", degree: 0, position: {x: 250, y: 50}, size: {width: 170, height: 240}, image: "/images/STOCK_Rug_prod.png", imageTop: "/images/STOCK_Rug_top.png"},
+      {arrayId: 15, buttonId: "button15", id: "snes-bed", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "167 W, 213 D, 120 H cm", degree: 0, position: {x: 250, y: 50}, size: {width: 167, height: 213}, image: "/images/SNES_Bed_prod.png", imageTop: "/images/SNES_Bed_top.png"},
+      {arrayId: 16, buttonId: "button16", id: "nes-closet", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "120 W, 59 D, 197 H cm", degree: 0, position: {x: 250, y: 50}, size: {width: 120, height: 59}, image: "/images/NES_closet_prod.jpg", imageTop: "/images/NES_closet_top.png"},
+      {arrayId: 17, buttonId: "button17", id: "coffee-table", z: 2, className: "btn btn-primary btn-sm", buttonText: "Add to scene", dimensions: "90 W, 55 D, 45 H cm", degree: 0, position: {x: 250, y: 50}, size: {width: 90, height: 55}, image: "/images/Coffee_table.jpg", imageTop: "/images/Coffee_table_top.png"},
     ],
   	modelsData: [
-      {arrayId: 0, id: "roomRatio", z: 1 , degree: 0, position: {x: 0, y: 0}, size: {width: 500, height: 300}, imageTop: "/images/floor.jpg"},
+      {arrayId: 0, id: "roomRatio", z: 1 , degree: 0, position: {x: 0, y: 0}, size: {width: 600, height: 350}, imageTop: "/images/floor.jpg"},
   	],
   };
 
@@ -102,8 +103,20 @@ class Home extends Component {
       modelsData: modelsData
     }) ;
   }
-  
 
+  // open sidenav
+  openNav = () =>{
+    document.querySelector("#mySidenav").style.width="200px";
+  }
+
+  // close sidenav
+  closeNav = () =>{
+    document.querySelector("#mySidenav").style.width="0";
+  }
+  
+  openVR = () =>{
+    window.open("https://vrooms.github.io/vr-room/");
+  }
 
   render(){
     console.log("==========================", this.state);
@@ -120,8 +133,31 @@ class Home extends Component {
         </div>
         </div>
 
-	    			<div id="furnituresDiv">
+        <div id="sideBtnArea">
+          <a id="openNav" onClick={this.openNav}>&nbsp;&nbsp;<i className="fas fa-list-ul"></i>&nbsp;</a>
+          <a id="openVR" onClick={this.openVR}>&nbsp;&nbsp;<strong>vr</strong>&nbsp;</a>
+        </div>
 
+          <div className="furnituresDiv" id="menu">
+            {this.state.allData.map((value)=>(
+              <Cards
+                arrayId={value.arrayId}
+                src={value.image}
+                alt={value.id}
+                key={value.arrayId}
+                buttonId={value.buttonId}
+                buttonText={value.buttonText}
+                className={value.className}
+                handlesAddFurnitureButton={this.handlesAddFurnitureButton}
+              >
+                <h6>{value.id}</h6>
+                <p>{value.dimensions}</p>
+              </Cards>
+            ))} 
+          </div>
+
+        <Sidenav  closeNav={this.closeNav}>
+	    			<div className="furnituresDiv">
               {this.state.allData.map((value)=>(
                 <Cards
                   arrayId={value.arrayId}
@@ -136,9 +172,9 @@ class Home extends Component {
                   <h6>{value.id}</h6>
                   <p>{value.dimensions}</p>
                 </Cards>
-              ))}
-            
+              ))} 
 				    </div>
+          </Sidenav>
 
             <div id="ruler">
               <img src="/images/ruler_x.jpg" />
