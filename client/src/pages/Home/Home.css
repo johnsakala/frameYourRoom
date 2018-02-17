@@ -20,6 +20,9 @@
 	display: table-cell;
 	vertical-align: middle;
 }
+.biggerFont{
+	font-size: 25px;
+}
 
 /*=========side furniture area================*/
 .furnituresDiv{
@@ -38,7 +41,6 @@
 	left: -10px;
 	color: white;
 	border-radius: 5px;
-	background-color: #385bfc;
 	z-index: 5;
 	margin-top: 50px;
 	cursor: pointer;
@@ -49,9 +51,11 @@
 }
 #openNav{
 	top:30px;
+	background-color: #385bfc;
 }
 #openVR{
 	top: 110px;
+	background-color: #11f702;
 }
 
 /* =========== main area =============*/
