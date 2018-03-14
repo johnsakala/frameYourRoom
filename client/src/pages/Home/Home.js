@@ -37,7 +37,10 @@ class Home extends Component {
 
 
   componentDidMount(){
-
+    const flashItem = document.querySelector("#here");
+    setInterval(function(){
+      flashItem.style.color = (flashItem.style.color == "rgb(255, 60, 0)" ? "rgb(59, 113, 252)" : "rgb(255, 60, 0)");
+    }, 500);
   }
 
   // update db everytime dom update
@@ -118,6 +121,8 @@ class Home extends Component {
     window.open("https://vrooms.github.io/vr-room/");
   }
 
+
+
   render(){
     console.log("==========================", this.state);
 
@@ -128,7 +133,7 @@ class Home extends Component {
         <div className="headerContent">
           <p id="logoP">
             <a href="https://vrooms.github.io/entrance/"><img id="logo" src="/images/logo.png" /></a>
-            &nbsp;When you're finished arranging furniture, click <a  href="https://vrooms.github.io/vr-room/" target="_blank"><span className="biggerFont"><strong>HERE</strong></span></a> to see it!
+            &nbsp;When you're finished arranging furniture, click <a  href="https://vrooms.github.io/vr-room/" target="_blank"><span className="biggerFont"><strong id="here" >HERE</strong></span></a> to see it!
           </p>
         </div>
         </div>
