@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+
 import "./Home.css";
-import { Cards } from "../../components/Cards";
-import {Col, Row, Container} from "../../components/Grid";
+import Furnitures from "../../components/Furnitures/Furnitures";
+import SideNav from "../../components/SideNav/SideNav";
 import Rnd from "react-rnd-rotate";
 import {database} from "./firebase";
-import { Sidenav } from "../../components/Sidenav";
-const throttle = require("lodash.throttle");
+import Header from '../../components/Header/Header';
+import Ruler from '../../components/Ruler/Ruler';
+import SideNavBtn from '../../components/SideNavBtn/SideNavBtn';
 
 class Home extends Component {
 
@@ -33,74 +35,76 @@ class Home extends Component {
   	modelsData: [
       {arrayId: 0, id: "roomRatio", z: 1 , degree: 0, position: {x: 0, y: 0}, size: {width: 600, height: 350}, imageTop: "/images/floor.jpg"},
   	],
-  };
+  }
 
 
   componentDidMount(){
+    // make the word "HERE" flash
     const flashItem = document.querySelector("#here");
     setInterval(function(){
-      flashItem.style.color = (flashItem.style.color == "rgb(255, 60, 0)" ? "rgb(59, 113, 252)" : "rgb(255, 60, 0)");
+      flashItem.style.color = (flashItem.style.color === "rgb(255, 60, 0)" ? "rgb(59, 113, 252)" : "rgb(255, 60, 0)");
     }, 500);
   }
 
   // update db everytime dom update
   componentDidUpdate(){
     this.updateDatabase();
-    console.log("updating db");
+    // console.log("updating db");
   }
 
   // update db method
   updateDatabase = () =>{
-    console.log('database being updated');
-
-    let modelsData = this.state.modelsData;
+    let modelsData = [...this.state.modelsData];
     database.ref("-L0lnD2HZtHWqW9cmZYk").set(modelsData);
   }
 
   // add furniture to scene on button clicked when it's not in scene
   // remve furniture from scene on button click when it is in scene
+  // change btn className
   handlesAddFurnitureButton = (arrayId, buttonId) =>{
-    console.log("add btn was clicked");
-    console.log("arrayId: ",arrayId);
-
     // find index in array
-    let index = 0;
-    index = this.state.modelsData.findIndex(x => x.arrayId === arrayId);
-
-    console.log("index", index);
+    let index = this.state.modelsData.findIndex(x => x.arrayId === arrayId);
 
     // did id found in array?
-    index === -1 ?
-      this.addFurniture(arrayId, buttonId)
-     : (
-        this.state.modelsData[index].className = "btn btn-primary btn-sm",
-        this.state.modelsData[index].buttonText = "Add to scene",
-        this.removeFurniture(arrayId, buttonId, index)
-      )
+    if(index === -1){
+      this.addFurniture(arrayId, buttonId)      
+    }
+    else{
+      const modelsData = [...this.state.modelsData];
+      
+      const allData = [...this.state.allData];
+      allData[arrayId -1].className = "btn btn-primary btn-sm";
+      allData[arrayId -1].buttonText = 'Add to scene';
+
+      this.setState({
+        allData: allData,
+        modelsData: modelsData
+      });
+
+      this.removeFurniture(arrayId, buttonId, index)      
+    }
   }
 
-  // add data to array modelsData
+  // add furniture data to array modelsData
+  // change btn className
   addFurniture = (arrayId, buttonId) =>{
-    let newFurnitureInfo = this.state.allData[arrayId - 1];
-    // change text on button and className
-    newFurnitureInfo.className = "btn btn-danger btn-sm";
-    newFurnitureInfo.buttonText = "remove";
-    let modelsData = this.state.modelsData;
+    const newFurnitureInfo = {...this.state.allData[arrayId -1]};
+    const modelsData = [...this.state.modelsData];
     modelsData.push(newFurnitureInfo);
-    console.log("modelsData",modelsData);
 
-    // change button style with buttonId
-    // let targetBtn = document.querySelector(`#${buttonId}`);
-    // targetBtn.setAttribute("className", "");
+    const allData = [...this.state.allData];
+    allData[arrayId -1].className =  "btn btn-danger btn-sm";
+    allData[arrayId -1].buttonText = 'remove';
 
     this.setState({
+      allData: allData,
       modelsData: modelsData,
     });
   }
 
   // remove data from array modelsData
   removeFurniture = (arrayId, buttonId, index) =>{
-    let modelsData = this.state.modelsData;
+    let modelsData = [...this.state.modelsData];
     modelsData.splice(index, 1);
     this.setState({
       modelsData: modelsData
@@ -109,148 +113,132 @@ class Home extends Component {
 
   // open sidenav
   openNav = () =>{
-    document.querySelector("#mySidenav").style.width="200px";
+    document.querySelector("#mySidenav").style.left='0';    
   }
 
   // close sidenav
-  closeNav = () =>{
-    document.querySelector("#mySidenav").style.width="0";
+  closeNav = (event) =>{
+    event.preventDefault();
+    document.querySelector("#mySidenav").style.left='-200px';    
   }
   
   openVR = () =>{
     window.open("https://vrooms.github.io/vr-room/");
   }
 
-
-
   render(){
     console.log("==========================", this.state);
 
+    // render instruction img on arrangement area
+    const renderInstruction = <img className="instruction" 
+                                alt='instruction'
+                                onClick={() => {
+                                  // console.log("closed");
+                                  const instructionImg = document.querySelector(".instruction");
+                                  instructionImg.style.display = "none";
+                                }} 
+                                src="/images/instruction.png" 
+                              />;
+
+    // render furnitures and a room img in arrangement area
+    // check if the data is furniture or a room
+    const renderProps = this.state.modelsData.map((value,i)=>{
+                        if(value.id === 'roomRatio'){
+                          return (
+                            <Rnd
+                               z={value.z}
+                                key={value.arrayId}
+                                className="room"
+                                resizeGrid={[10,10]}
+                                default={{
+                                  width: value.size.width,
+                                  height: value.size.height,
+                                }}
+                                onResize={(e,direction,ref,delta,position)=>{
+                                  let modelsData = Object.assign({}, this.state.modelsData);
+                                  modelsData[i].size.width = ref.offsetWidth;
+                                  modelsData[i].size.height = ref.offsetHeight;
+                                  // console.log("in map modelsData: ", modelsData);
+                                  this.setState({
+                                    modelsData: this.state.modelsData
+                                  })}}
+                              >
+                            </Rnd>
+                          )
+                        }
+                        else{
+                          return (
+                            <Rnd
+                              z={value.z}
+                              key={value.arrayId}
+                              dragGrid={[10,10]}
+                              default={{
+                                x: value.position.x,
+                                y: value.position.y,
+                                width: value.size.width,
+                                height: value.size.height,
+                                degree: value.degree
+                              }}
+                              onDrag={(e, d) => {
+                                let locationData = {x: d.x, y:d.y};
+                                database.ref("-L0lnD2HZtHWqW9cmZYk/" + i + "/position").set(locationData);
+                              }}
+                              onDragStop={(e,d)=>{
+                                let modelsData = Object.assign({}, this.state.modelsData);
+                                modelsData[i].position.x = d.x;
+                                modelsData[i].position.y = d.y;
+                                modelsData[i].degree = d.degree;
+                                this.setState({
+                                  modelsData: this.state.modelsData
+                              })}}
+                            >
+                              <img className="img-fluid" alt={value.id} src={value.imageTop} draggable="false" />
+                            </Rnd>
+                          )
+                        }
+                      });
+
     return(
       <div>
+        <Header 
+          logoUrl={'https://vrooms.github.io/entrance/'}
+          imgSrc={"/images/logo.png"}
+          linkUrl={"https://vrooms.github.io/vr-room/"}/>
 
-    		<div className="header">
-        <div className="headerContent">
-          <p id="logoP">
-            <a href="https://vrooms.github.io/entrance/"><img id="logo" src="/images/logo.png" /></a>
-            &nbsp;When you're finished arranging furniture, click <a  href="https://vrooms.github.io/vr-room/" target="_blank"><span className="biggerFont"><strong id="here" >HERE</strong></span></a> to see it!
-          </p>
+        <SideNavBtn
+          clicked={this.openNav}
+          top='80px'
+          bgColor='#385bfc'
+        >
+          &nbsp;&nbsp;<i className="fas fa-list-ul"></i>&nbsp;
+        </SideNavBtn>
+
+        <SideNavBtn
+          clicked={this.openVR}
+          top='160px'
+          bgColor='#11f702'
+        >
+          &nbsp;&nbsp;<strong>vr</strong>&nbsp;
+        </SideNavBtn>
+
+        <div id='furnitureDiv'>
+          <Furnitures 
+            allData={this.state.allData}
+            clicked={this.handlesAddFurnitureButton} />  
+        </div>      
+
+        <SideNav  closeNav={this.closeNav}>
+          <Furnitures 
+            allData={this.state.allData}
+            clicked={this.handlesAddFurnitureButton} />
+        </SideNav>
+
+        <div id='rulerDiv'>
+          <Ruler>
+            {renderInstruction}
+            {renderProps}
+          </Ruler>
         </div>
-        </div>
-
-        <div id="sideBtnArea">
-          <a id="openNav" onClick={this.openNav}>&nbsp;&nbsp;<i className="fas fa-list-ul"></i>&nbsp;</a>
-          <a id="openVR" onClick={this.openVR}>&nbsp;&nbsp;<strong>vr</strong>&nbsp;</a>
-        </div>
-
-          <div className="furnituresDiv" id="menu">
-            {this.state.allData.map((value)=>(
-              <Cards
-                arrayId={value.arrayId}
-                src={value.image}
-                alt={value.id}
-                key={value.arrayId}
-                buttonId={value.buttonId}
-                buttonText={value.buttonText}
-                className={value.className}
-                handlesAddFurnitureButton={this.handlesAddFurnitureButton}
-              >
-                <h6>{value.id}</h6>
-                <p>{value.dimensions}</p>
-              </Cards>
-            ))} 
-          </div>
-
-        <Sidenav  closeNav={this.closeNav}>
-	    			<div className="furnituresDiv">
-              {this.state.allData.map((value)=>(
-                <Cards
-                  arrayId={value.arrayId}
-                  src={value.image}
-                  alt={value.id}
-                  key={value.arrayId}
-                  buttonId={value.buttonId}
-                  buttonText={value.buttonText}
-                  className={value.className}
-                  handlesAddFurnitureButton={this.handlesAddFurnitureButton}
-                >
-                  <h6>{value.id}</h6>
-                  <p>{value.dimensions}</p>
-                </Cards>
-              ))} 
-				    </div>
-          </Sidenav>
-
-            <div id="ruler">
-              <img src="/images/ruler_x.jpg" />
-              <img className="ruler_y" src="/images/ruler_y.jpg" />
-              <div id="arrange-room">
-                  <img className="instruction" 
-                    onClick={() => {
-                      // console.log("closed");
-                      const instructionImg = document.querySelector(".instruction");
-                      instructionImg.style.display = "none";
-                    }} 
-                    src="/images/instruction.png" 
-                  />
-                  {this.state.modelsData.map((value,i)=>{
-                    return (
-                      value.id === "roomRatio" ?
-                       (
-                     <Rnd
-                     z={value.z}
-                      key={value.arrayId}
-                      className="room"
-                      resizeGrid={[10,10]}
-                      default={{
-                        width: value.size.width,
-                        height: value.size.height,
-                      }}
-                      onResize={(e,direction,ref,delta,position)=>{
-                        let modelsData = Object.assign({}, this.state.modelsData);
-                        modelsData[i].size.width = ref.offsetWidth;
-                        modelsData[i].size.height = ref.offsetHeight;
-                        console.log("in map modelsData: ", modelsData);
-                        this.setState({
-                          modelsData: this.state.modelsData
-                        })}}
-                    >
-                    </Rnd>
-                        ): (
-                    <Rnd
-                      z={value.z}
-                      key={value.arrayId}
-                      dragGrid={[10,10]}
-                      default={{
-                        x: value.position.x,
-                        y: value.position.y,
-                        width: value.size.width,
-                        height: value.size.height,
-                        degree: value.degree
-                      }}
-                      // update db with throttle
-                      onDrag={(e, d) => {
-                        // TODO: Make sure we're updating databse with new information, 
-                        // probably from the "d" object here
-                        let locationData = {x: d.x, y:d.y};
-                        database.ref("-L0lnD2HZtHWqW9cmZYk/" + i + "/position").set(locationData);
-                      }}
-                      onDragStop={(e,d)=>{
-                        let modelsData = Object.assign({}, this.state.modelsData);
-                        modelsData[i].position.x = d.x;
-                        modelsData[i].position.y = d.y;
-                        modelsData[i].degree = d.degree;
-                        this.setState({
-                          modelsData: this.state.modelsData
-                      })}}
-                    >
-                      <img className="img-fluid" alt={value.id} src={value.imageTop} draggable="false" />
-                    </Rnd>
-                        ));
-
-                  })}
-              </div>
-            </div>
 
       </div>
       )
@@ -259,3 +247,5 @@ class Home extends Component {
 }
 
 export default Home;
+
+

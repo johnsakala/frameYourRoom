@@ -1,16 +1,16 @@
 import React from "react";
-import "./Sidenav.css";
+import "./SideNav.css";
 
-export const Sidenav = props => {
+export const sidenav = props => {
 
 	return(
 
 		<div id="mySidenav" className="sidenav">
-			<a href="javascript:void(0)" className="closebtn" onClick={()=>props.closeNav()}>&times;</a>
+			<a href="" className="closebtn" onClick={(event)=>props.closeNav(event)}>&times;</a>
 			{props.children}
 		</div>
              
     );
 }
 
-
+export default sidenav;

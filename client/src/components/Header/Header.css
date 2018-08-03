@@ -1,0 +1,29 @@
+#logo{
+	height:  28px;
+	padding: 5px;
+	cursor: pointer;
+}
+#logoP{
+	font-size: 1.2rem;
+}
+.header{
+	border-bottom: 2px solid black;
+	background-color: #fdf4cf;
+	height: 10vh;
+	width: 100%;
+	text-align: center;
+	display:  table;
+}
+.headerContent{
+	display: table-cell;
+	vertical-align: middle;
+}
+.biggerFont{
+	font-size: 25px;
+}
+
+@media only screen and (max-width: 1024px){
+	.header{
+		display: none;
+	}
+}

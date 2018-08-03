@@ -1,5 +1,5 @@
 
-.card{
+.furniture{
 	margin: 6px;
 	border: 0px;
 	border-bottom: 2px dashed #cecece;
@@ -10,6 +10,3 @@ p{
 }
 
 
-@media only screen and (max-width: 768px){
-
-}

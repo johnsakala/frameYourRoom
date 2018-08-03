@@ -1,0 +1,7 @@
+.furnituresDiv{
+	overflow-y: scroll;
+	height: 90vh;
+	width: 100%;
+	float: left;
+}
+
