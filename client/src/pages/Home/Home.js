@@ -36,7 +36,6 @@ class Home extends Component {
       {arrayId: 0, id: "roomRatio", z: 1 , degree: 0, position: {x: 0, y: 0}, size: {width: 600, height: 350}, imageTop: "/images/floor.jpg"},
   	],
   }
-  
 
   // update db everytime dom update
   componentDidUpdate(){
@@ -147,7 +146,7 @@ class Home extends Component {
                                   height: value.size.height,
                                 }}
                                 onResize={(e,direction,ref,delta,position)=>{
-                                  let modelsData = Object.assign({}, this.state.modelsData);
+                                  let modelsData = [...this.state.modelsData];
                                   modelsData[i].size.width = ref.offsetWidth;
                                   modelsData[i].size.height = ref.offsetHeight;
                                   // console.log("in map modelsData: ", modelsData);
@@ -176,7 +175,7 @@ class Home extends Component {
                                 database.ref("-L0lnD2HZtHWqW9cmZYk/" + i + "/position").set(locationData);
                               }}
                               onDragStop={(e,d)=>{
-                                let modelsData = Object.assign({}, this.state.modelsData);
+                                let modelsData = [...this.state.modelsData];
                                 modelsData[i].position.x = d.x;
                                 modelsData[i].position.y = d.y;
                                 modelsData[i].degree = d.degree;

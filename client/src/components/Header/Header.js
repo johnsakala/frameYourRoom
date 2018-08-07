@@ -11,7 +11,6 @@ class Header extends Component {
 	}
 
 	render(){
-
 		const style = {
 			color: "rgb(255, 60, 0)"
 		}
