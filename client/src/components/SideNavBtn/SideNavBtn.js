@@ -10,7 +10,7 @@ const sideNavBtn = (props) =>{
 
 	return (
         <div id="sideBtnArea">
-        	<a style={style} onClick={props.clicked}>{props.children}</a>
+        	<a style={style} onClick={props.clicked}>&nbsp;&nbsp;{props.children}&nbsp;</a>
         </div>
 	)
 }

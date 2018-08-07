@@ -36,15 +36,7 @@ class Home extends Component {
       {arrayId: 0, id: "roomRatio", z: 1 , degree: 0, position: {x: 0, y: 0}, size: {width: 600, height: 350}, imageTop: "/images/floor.jpg"},
   	],
   }
-
-
-  componentDidMount(){
-    // make the word "HERE" flash
-    const flashItem = document.querySelector("#here");
-    setInterval(function(){
-      flashItem.style.color = (flashItem.style.color === "rgb(255, 60, 0)" ? "rgb(59, 113, 252)" : "rgb(255, 60, 0)");
-    }, 500);
-  }
+  
 
   // update db everytime dom update
   componentDidUpdate(){
@@ -127,7 +119,7 @@ class Home extends Component {
   }
 
   render(){
-    console.log("==========================", this.state);
+    // console.log("==========================", this.state);
 
     // render instruction img on arrangement area
     const renderInstruction = <img className="instruction" 
@@ -210,7 +202,7 @@ class Home extends Component {
           top='80px'
           bgColor='#385bfc'
         >
-          &nbsp;&nbsp;<i className="fas fa-list-ul"></i>&nbsp;
+          <i className="fas fa-list-ul"></i>
         </SideNavBtn>
 
         <SideNavBtn
@@ -218,7 +210,7 @@ class Home extends Component {
           top='160px'
           bgColor='#11f702'
         >
-          &nbsp;&nbsp;<strong>vr</strong>&nbsp;
+          <strong>vr</strong>
         </SideNavBtn>
 
         <div id='furnitureDiv'>
