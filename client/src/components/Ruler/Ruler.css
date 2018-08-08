@@ -1,7 +1,6 @@
 #arrange-room{
 	background-color: #c7eae1;
-	background-image: url("../../pages/Home/img/grid2.png");
-	/*background-image: url("/img/grid2.png");*/
+	background-image: url("/images/grid2.png");
 	height: 100vh;
 	left: 25px;
 }
