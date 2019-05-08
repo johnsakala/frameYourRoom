@@ -114,7 +114,7 @@ class Home extends Component {
   }
   
   openVR = () =>{
-    window.open("https://furnsmart.hitcapstone.com/vr-room/");
+    window.open("https://vrooms.github.io/vr-room/");
   }
 
   render(){
@@ -192,9 +192,9 @@ class Home extends Component {
     return(
       <div>
         <Header 
-          logoUrl={'https://furnsmart.hitcapstone.com/entrance/'}
+          logoUrl={'https://vrooms.github.io/entrance/'}
           imgSrc={"/images/logo.png"}
-          linkUrl={"https://furnsmart.hitcapstone.com/vr-room/"}/>
+          linkUrl={"https://vrooms.github.io/vr-room/"}/>
 
         <SideNavBtn
           clicked={this.openNav}
